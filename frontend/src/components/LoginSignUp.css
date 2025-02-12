@@ -1,0 +1,294 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    color: white;
+    margin: 0;
+    min-height: 100vh;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* App Layout */
+  .app-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Main Content Container */
+  .content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+  
+  /* Form Container */
+  form {
+    margin-left: 35%;
+    background: rgba(44, 44, 44, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  form :hover{ filter: drop-shadow(0 0 5em #807951aa);}
+  h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  label {
+    font-weight: 500;
+    color: #f0f0f0;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(51, 51, 51, 0.8);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #2575fc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+  }
+  
+  /* Queue Page Styles */
+  .queue-container {
+    background: rgba(44, 44, 44, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+  }
+  
+  .queue-title {
+    grid-column: 1 / -1;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .qr-container {
+    background: rgba(58, 58, 58, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: fit-content;
+  }
+  
+  .qr-image {
+    width: 180px;
+    height: 180px;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .queue-list {
+    background: rgba(58, 58, 58, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+  }
+  
+  .queue-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .queue-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  .queue-list::-webkit-scrollbar-thumb {
+    background: rgba(37, 117, 252, 0.5);
+    border-radius: 4px;
+  }
+  
+  .queue-item {
+    background: rgba(68, 68, 68, 0.9);
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .queue-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .queue-info {
+    display: grid;
+    gap: 0.5rem;
+  }
+  
+  .queue-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f0f0f0;
+    margin: 0;
+  }
+  
+  .queue-phone {
+    color: #bbb;
+    margin: 0;
+  }
+  
+  .queue-time {
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  
+  .queue-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2575fc;
+    background: rgba(37, 117, 252, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+  
+  .serve-button {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(204, 0, 0, 0.2);
+  }
+  
+  .serve-button:hover {
+    background: linear-gradient(135deg, #cc0000, #990000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.3);
+  }
+  
+  .serve-button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .empty-queue {
+    text-align: center;
+    font-style: italic;
+    color: #bbb;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .content {
+      padding: 1.5rem;
+    }
+  
+    .queue-container {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+    
+    .qr-container {
+      order: -1;
+    }
+    
+    .queue-title {
+      font-size: 1.75rem;
+    }
+  
+    .queue-list {
+      max-height: 50vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .content {
+      padding: 1rem;
+    }
+    
+    form, 
+    .queue-container {
+      padding: 1.25rem;
+      border-radius: 15px;
+    }
+    
+    .qr-image {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .queue-item {
+      padding: 1rem;
+    }
+    
+    .serve-button {
+      padding: 0.875rem;
+      font-size: 1rem;
+    }
+  }

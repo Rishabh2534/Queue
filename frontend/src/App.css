@@ -1,0 +1,88 @@
+#root {
+
+  margin:  100px 0;
+  padding: 5px;
+  text-align: center;
+  
+}
+#navImg{
+  position: static;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+
+footer{
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #342e13;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+
+}
+nav {
+
+  display: flex;
+  justify-content: space-evenly; /* Properly distributes space */
+  align-items: center; /* Align items vertically */
+  position:fixed;
+  top: 0;
+  background-color: #060404;
+  width: 100%; /* Ensures it stretches */
+  padding: 10px 0; /* Add some padding for better spacing */
+  height: 50px;
+}
+
+nav a {
+  border-width: 2px;
+  border-radius: 20%;
+  color: white;
+  font-size: 1.5rem;
+  padding: 5px 15px;
+  transition: color 0s ease;
+}
+
+nav a:hover {
+  color: rgb(75, 71, 71);
+  cursor: pointer;
+  filter: drop-shadow(0 0 0.5em #06d2d2aa);
+}
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #ece5b6aa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 2s linear;
+  }
+}
+
+.card {
+  padding: 1em;
+}
+
+.read-the-docs {
+  color: #888;
+}
