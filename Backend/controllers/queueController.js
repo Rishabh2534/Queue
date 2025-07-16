@@ -152,7 +152,7 @@ export const Signup = async (req, res) => {
     }
   };
   const generateToken=(userId)=>{
-    return jwt.sign({ userId }, "tyejty", { expiresIn: "1h" }); // Token expires in 1 hour
+    return jwt.sign({ userId }, "tyejty", { expiresIn: "5h" }); // Token expires in 1 hour
 };
 
 export const sendSMS = async(req, res) => {
