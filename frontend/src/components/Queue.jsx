@@ -9,9 +9,10 @@ const socket = io(ApiEndpoint);
 
 const Queue = () => {
     const { userId } = useParams();
-    const [queue, setQueue] = useState(["1","2","3"]);
+    const [queue, setQueue] = useState([]);
     const [qr, setQr] = useState("");
-    
+    const [isPresent, setIsPresent] = useState(true);
+
     useEffect(() => {
         fetchQueue();
         fetchQRCode();
@@ -51,11 +52,31 @@ const Queue = () => {
 
     const serveNext = async () => {
         if (queue.length === 0) return;
+
+        const currentUser = queue[0];
+
         try {
+            // 1. Remove from front regardless of presence
             await fetch(`${ApiEndpoint}/queue/${userId}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             });
+
+            // 2. If not present and more than one in queue, re-add to end
+            if (!isPresent && queue.length > 1) {
+                await fetch(`${ApiEndpoint}/queue/${userId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        name: currentUser.name,
+                        phone: currentUser.phone,
+                    }),
+                });
+            }
+
+            // Notify all sockets to update their queues
             socket.emit("updateQueue", userId);
         } catch (error) {
             console.error("Error serving next:", error);
@@ -82,7 +103,7 @@ const Queue = () => {
                 {queue.length > 0 ? (
                     <ul>
                         {queue.map((user, index) => (
-                            <li key={user.id} className="queue-item">
+                            <li key={user.id} className={`queue-item ${index === 0 ? "current" : ""}`}>
                                 <div className="queue-info">
                                     <p className="queue-name">{user.name}</p>
                                     <p className="queue-phone">📞 {user.phone}</p>
@@ -97,13 +118,27 @@ const Queue = () => {
                 )}
             </div>
 
+            {/* Presence Toggle */}
+            {queue.length > 0 && (
+                <div className="presence-toggle">
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={isPresent}
+                            onChange={(e) => setIsPresent(e.target.checked)}
+                        />
+                        Current user is present
+                    </label>
+                </div>
+            )}
+
             {/* Serve Next Button */}
             <button
                 onClick={serveNext}
                 disabled={queue.length === 0}
                 className="serve-button"
             >
-                ✅ Serve Next
+                Serve Next
             </button>
         </div>
     );
